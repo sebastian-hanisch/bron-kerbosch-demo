@@ -71,7 +71,7 @@ Vor dem Bau lag eine Vormessung vor. Sie bestätigte den Pivot-Gewinn und die Mo
 - **Orakel (`tests/test_oracle_bron_kerbosch.py`):** alle drei Varianten gegen `networkx.find_cliques` auf über 300 festen Zufalls-, Zeitfenster-, Klassen- und Sonderinstanzen (leer, vollständig, Pfad, Stern, Kreis, zwei Komponenten) und gegen Brute Force über alle Teilmengen (n ≤ 12, über 200 Instanzen); Familien mit bekanntem Wert (Moon–Moser 3^k, Baum: Cliquen = Kanten, vollständiger Graph: eine Clique); Komplement-Identität gegen Brute Force über unabhängige Mengen (25 Instanzen).
 - **Zweige (`tests/test_branches.py`):** jede Variante weicht auf mindestens einer Instanz von der Nachbarvariante ab; die Gleichstandsregel der Pivotwahl ist wirksam; ein schlechter Pivot (wenigste Nachbarn) ist zulässig, aber teurer; die Rechengrenzen greifen.
 - **Zahlen:** `tests/test_claims.py` rechnet jede Zahl dieser README über dieselben Auswertungsfunktionen wie die App nach.
-- **Oberfläche:** AppTest-Rauchtest (jeder Button, jeder Regler an Minimum und Maximum, jede Regelart, Variante und Ansicht, Extrem-Seeds, Permalink, langsamste Ecke) und Footer-Test.
+- **Oberfläche:** AppTest-Rauchtest (jeder Button, jeder Regler an Minimum und Maximum, jede Regelart, Variante und Ansicht, Extrem-Seeds, Permalink, langsamste Ecke) Layout-Test (fester Kopf, Presets oben in der Seitenleiste, aktives Preset hervorgehoben, jede Regleränderung hebt die Markierung auf) und Footer-Test.
 
 ## Dateistruktur
 
@@ -84,6 +84,7 @@ Vor dem Bau lag eine Vormessung vor. Sie bestätigte den Pivot-Gewinn und die Mo
 | `bkr_algorithm.py` | Kern: Einheiten der drei Varianten, Komposition mit Budget und Trace, Brute-Force-Referenzen |
 | `bkr_constants.py` | Regler-Grenzen, Rechengrenzen, Farben, Presets |
 | `bkr_evaluation.py` | Einstellungen, Analyse, Sweeps (Dichte, Moon–Moser, Strukturen), Komplement-Prüfung |
+| `bkr_layout.py` | fester Kopf (Gerüst aus `new_demo.py`) |
 | `bkr_presets.py` | Permalink (Begrenzen), Presets, Zufalls-Seed-Button |
 | `bkr_scenario.py` | Graphen: Zufall, Zeitfenster, Klassenregeln, Moon–Moser, Baum, Gitter, skalenfrei |
 | `bkr_visualization.py` | Plotly-Abbildungen (Achsen gesperrt) |

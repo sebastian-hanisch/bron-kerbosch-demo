@@ -13,12 +13,13 @@ import streamlit as st
 
 import bkr_constants as C
 import bkr_evaluation as ev
+from bkr_layout import dunkles_design, kopf_css
 from bkr_presets import (
-    apply_preset,
     bounds,
     init_session_state_defaults,
     load_permalink_settings,
     randomize_seed,
+    sidebar_presets,
     sync_query_params,
 )
 from bkr_visualization import (
@@ -72,7 +73,10 @@ def _complement(settings):
     return ev.complement_check(settings)
 
 
-st.title("🧩 Bron–Kerbosch: alle maximalen Cliquen")
+# Fester Kopf: nur der Titel bleibt beim Scrollen oben (Stylesheet in bkr_layout.py).
+st.html(kopf_css(dunkles_design()))
+with st.container(key="kopf"):
+    st.title("🧩 Bron–Kerbosch: alle maximalen Cliquen")
 st.markdown(
     """
 Eine Sammelladung ist ein **Graph**: Sendungen sind Knoten, eine Kante heißt „dürfen zusammen verladen werden“. Eine **maximale Clique** ist eine **Fuhre**, der man keine weitere Sendung mehr hinzufügen kann. Der **Bron–Kerbosch-Algorithmus** (1973) zählt alle diese Fuhren auf, ohne eine zu übersehen und ohne eine zweimal zu melden.
@@ -100,11 +104,6 @@ Der Algorithmus baut Fuhren Sendung für Sendung auf und führt dabei drei Menge
         """
     )
 
-st.caption("🎯 Schnellstart – ein Beispielszenario laden:")
-cols = st.columns(len(C.PRESETS))
-for col, name in zip(cols, C.PRESETS):
-    with col:
-        st.button(name, width="stretch", on_click=apply_preset, args=(name,), help=C.PRESET_HELP.get(name, ""), key=f"preset_{name}")
 
 st.caption("🔗 Die Adresszeile oben spiegelt Ihre aktuelle Konfiguration wider – einfach kopieren, um ein Szenario zu teilen.")
 
@@ -112,6 +111,7 @@ load_permalink_settings()
 init_session_state_defaults()
 
 with st.sidebar:
+    sidebar_presets()  # Schnellstart oben, das aktive Preset ist hervorgehoben
     st.header("⚙️ Einstellungen")
     st.markdown("**Graph**")
     graph_type = st.selectbox("Regelart", list(C.GRAPH_TYPES), format_func=C.GRAPH_TYPES.get, key="type_select",

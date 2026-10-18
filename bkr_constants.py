@@ -46,6 +46,7 @@ COLOR_FOUND = "#c0504d"      # gefundene maximale Clique
 COLOR_LINE = {"naive": "#c0504d", "pivot": "#2F6B65", "degeneracy": "#4c78a8"}
 
 PRESETS = {
+    "Standardfall (14 Sendungen)": {"type": DEFAULT_TYPE, "n": DEFAULT_N, "density": DEFAULT_DENSITY, "seed": DEFAULT_SEED, "variant": DEFAULT_VARIANT, "view": DEFAULT_VIEW},
     "Lehrbeispiel (klein)": {"type": "random", "n": 8, "density": 50, "seed": 7, "variant": "pivot", "view": "compat"},
     "Dicht: der Pivot rettet": {"type": "random", "n": 20, "density": 85, "seed": DEFAULT_SEED, "variant": "naive", "view": "compat"},
     "Dünn: der Pivot egal": {"type": "random", "n": 30, "density": 10, "seed": DEFAULT_SEED, "variant": "pivot", "view": "compat"},
@@ -53,6 +54,7 @@ PRESETS = {
     "Klassenregeln": {"type": "classes", "n": 24, "density": 50, "seed": DEFAULT_SEED, "variant": "pivot", "view": "conflict"},
 }
 PRESET_HELP = {
+    "Standardfall (14 Sendungen)": "Die Voreinstellung: 14 Sendungen, jedes zweite Paar verträglich, Tomita-Pivot. Alle Kennzahlen der README zum Standardfall gelten hier.",
     "Lehrbeispiel (klein)": "8 Sendungen, jedes zweite Paar verträglich: wenige Schritte, gut zum Durchklicken.",
     "Dicht: der Pivot rettet": "20 Sendungen, 85 % der Paare verträglich, aber ohne Pivot: so viele Aufrufe wie nie nötig. Mit dem Pivot-Umschalter vergleichen.",
     "Dünn: der Pivot egal": "30 Sendungen, nur jedes zehnte Paar verträglich: der Pivot spart kaum etwas.",
